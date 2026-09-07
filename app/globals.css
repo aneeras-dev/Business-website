@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-figtree), ui-sans-serif, sans-serif;
+
+  /* Teal — the primary accent, anchored on tripknot.in's #0D7A7B */
+  --color-teal-50: #e9f3f3;
+  --color-teal-100: #d3e8e8;
+  --color-teal-200: #b0d9d9;
+  --color-teal-300: #8fcbcc;
+  --color-teal-400: #5bc1c2;
+  --color-teal-500: #16908f;
+  --color-teal-600: #0d7a7b;
+  --color-teal-700: #0a6162;
+  --color-teal-800: #084b4c;
+  --color-teal-900: #063839;
+
+  /* Terracotta — the secondary accent, from the site's #B84A32 */
+  --color-rust-300: #e0a08e;
+  --color-rust-400: #d17259;
+  --color-rust-500: #c8563c;
+  --color-rust-600: #b84a32;
+  --color-rust-700: #963b28;
+
+  /*
+   * Moss — a third categorical accent. Not sampled from tripknot.in, which
+   * only ships teal and terracotta; added so the three business categories
+   * stay distinguishable without leaving the warm earth palette.
+   */
+  --color-moss-400: #7d9670;
+  --color-moss-500: #637d56;
+  --color-moss-600: #4f6f52;
+  --color-moss-700: #3e5641;
+
+  /* Sand — quiet fills and dividers */
+  --color-sand-100: #efede6;
+  --color-sand-200: #e4e5da;
+  --color-sand-300: #d3d5c3;
+  --color-sand-400: #a8a99f;
+
+  --animate-drift: drift 20s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -4%, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-3%, 3%, 0) scale(0.96);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Semantic surface tokens, mirroring tripknot.in: a warm cream page with
+ * white cards. The site ships a single light theme, so these are the only
+ * surface values — dark bands are painted explicitly where they are used.
+ */
+:root {
+  --surface: #f6f4ef;
+  --surface-muted: #efede6;
+  --surface-raised: #ffffff;
+  --ink: #0e1413;
+  --ink-muted: #5a625f;
+  --ink-faint: #a8a99f;
+  --hairline: rgb(14 20 19 / 0.08);
+  --accent: #0d7a7b;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+}
+
+@layer base {
+  * {
+    border-color: var(--hairline);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor targets so the sticky header never covers a heading. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, #0d7a7b 26%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  /*
+   * Display type, matching the reference site: Bricolage Grotesque at 600
+   * with tight negative tracking that grows with the type size.
+   */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+  }
+
+  /* The second line of a headline, in the brand teal. */
+  .text-accent {
+    color: var(--accent);
+  }
+
+  /* Small tracked-out teal label that opens every section. */
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  }
+}
+
+/* Honour the OS "reduce motion" setting for CSS-driven animation. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

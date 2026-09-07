@@ -1,0 +1,445 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  BarChart3,
+  Building2,
+  MessageSquareQuote,
+  Plane,
+  Search,
+  Star,
+  TrendingUp,
+  UserCheck,
+  Utensils,
+} from "lucide-react";
+
+export const SITE = {
+  name: "TripKnot Business",
+  brand: "TripKnot",
+  url: "https://business.tripknot.in",
+  domain: "tripknot.in",
+  email: "partners@tripknot.in",
+  /** E.164, for tel: links and structured data. */
+  phone: "+918428166373",
+  phoneDisplay: "+91 84281 66373",
+  address: "Puducherry, India",
+  city: "Puducherry",
+  country: "India",
+} as const;
+
+/* ---------------------------------------------------------------- stats -- */
+
+export type Stat = {
+  label: string;
+  value: number;
+  suffix: string;
+};
+
+export const STATS: Stat[] = [
+  { label: "Travelers", value: 1000, suffix: "+" },
+  { label: "Monthly Searches", value: 500, suffix: "+" },
+  { label: "Partner Businesses", value: 50, suffix: "+" },
+  { label: "Destinations", value: 200, suffix: "+" },
+];
+
+/* ----------------------------------------------------------- categories -- */
+
+export type CategoryId = "hotels" | "restaurants" | "agencies";
+
+export type Category = {
+  id: CategoryId;
+  name: string;
+  tagline: string;
+  icon: LucideIcon;
+  benefits: string[];
+  cta: string;
+  /** Tailwind classes keyed per category so each card owns a distinct accent. */
+  accent: {
+    text: string;
+    chip: string;
+    hover: string;
+  };
+};
+
+export const CATEGORIES: Category[] = [
+  {
+    id: "hotels",
+    name: "Hotels & Stays",
+    tagline: "Fill more rooms, in every season.",
+    icon: Building2,
+    benefits: [
+      "Direct Booking Requests",
+      "Higher Occupancy",
+      "Better Online Visibility",
+      "Showcase Rooms & Amenities",
+    ],
+    cta: "Join as Hotel Partner",
+    accent: {
+      text: "text-teal-600",
+      chip: "bg-teal-600/10 text-teal-600",
+      hover: "group-hover:border-teal-600/35",
+    },
+  },
+  {
+    id: "restaurants",
+    name: "Food & Restaurants",
+    tagline: "Be the table travelers book first.",
+    icon: Utensils,
+    benefits: [
+      "Attract Tourists Nearby",
+      "Showcase Menus",
+      "Get More Reservations",
+      "Improve Discoverability",
+    ],
+    cta: "Join as Restaurant Partner",
+    accent: {
+      text: "text-rust-600",
+      chip: "bg-rust-600/10 text-rust-600",
+      hover: "group-hover:border-rust-600/35",
+    },
+  },
+  {
+    id: "agencies",
+    name: "Travel Agencies",
+    tagline: "Sell every seat on every trip.",
+    icon: Plane,
+    benefits: [
+      "Sell Packages",
+      "Generate Leads",
+      "Promote Group Trips",
+      "Reach New Travelers",
+    ],
+    cta: "Join as Travel Partner",
+    accent: {
+      text: "text-moss-600",
+      chip: "bg-moss-600/10 text-moss-600",
+      hover: "group-hover:border-moss-600/35",
+    },
+  },
+];
+
+/* ------------------------------------------------------------- features -- */
+
+export type Feature = {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  chip: string;
+};
+
+export const FEATURES: Feature[] = [
+  {
+    title: "More Visibility",
+    description:
+      "Appear in destination searches the moment a traveler starts planning a trip to your city.",
+    icon: Search,
+    chip: "bg-teal-600/10 text-teal-600",
+  },
+  {
+    title: "Qualified Leads",
+    description:
+      "Reach travelers actively planning trips, not cold traffic that never converts.",
+    icon: UserCheck,
+    chip: "bg-teal-600/10 text-teal-600",
+  },
+  {
+    title: "Better SEO Presence",
+    description:
+      "Get indexed on Google with a fast, structured business profile that ranks for your name.",
+    icon: TrendingUp,
+    chip: "bg-moss-600/10 text-moss-600",
+  },
+  {
+    title: "Direct Customer Enquiries",
+    description:
+      "Receive leads directly by WhatsApp, email, or phone. No middleman, no commission cut.",
+    icon: MessageSquareQuote,
+    chip: "bg-rust-600/10 text-rust-600",
+  },
+  {
+    title: "Reviews & Trust",
+    description:
+      "Build credibility with verified traveler reviews that turn browsers into bookings.",
+    icon: Star,
+    chip: "bg-rust-600/10 text-rust-600",
+  },
+  {
+    title: "Analytics Dashboard",
+    description:
+      "Track views, leads, and conversion so you know exactly what your listing is earning.",
+    icon: BarChart3,
+    chip: "bg-teal-600/10 text-teal-600",
+  },
+];
+
+/* ---------------------------------------------------------------- steps -- */
+
+export type Step = {
+  n: string;
+  title: string;
+  description: string;
+};
+
+export const STEPS: Step[] = [
+  {
+    n: "01",
+    title: "Create Business Profile",
+    description:
+      "Sign up in under two minutes and claim your business on TripKnot. No card required.",
+  },
+  {
+    n: "02",
+    title: "Add Photos & Details",
+    description:
+      "Upload photos, amenities, menus, or packages. Our team reviews and verifies your listing.",
+  },
+  {
+    n: "03",
+    title: "Get Discovered by Travelers",
+    description:
+      "Your profile goes live across destination pages, search results, and category listings.",
+  },
+  {
+    n: "04",
+    title: "Receive Leads & Bookings",
+    description:
+      "Enquiries land straight in your inbox, with traveler dates, group size, and intent.",
+  },
+  {
+    n: "05",
+    title: "Grow Revenue",
+    description:
+      "Use analytics to double down on what works and turn seasonal traffic into steady income.",
+  },
+];
+
+/* -------------------------------------------------------------- pricing -- */
+
+export type Plan = {
+  name: string;
+  price: number;
+  tagline: string;
+  features: string[];
+  cta: string;
+  badge?: string;
+  featured?: boolean;
+};
+
+export const PRICING: Record<CategoryId, Plan[]> = {
+  hotels: [
+    {
+      name: "Free Listing",
+      price: 0,
+      tagline: "Get on the map and start showing up in destination searches.",
+      features: [
+        "Basic Listing",
+        "Business Details",
+        "5 Photos",
+        "Contact Information",
+        "Destination Discovery",
+      ],
+      cta: "Get Started Free",
+    },
+    {
+      name: "Essential",
+      price: 899,
+      tagline: "For properties ready to turn visibility into booked rooms.",
+      features: [
+        "Everything in Free",
+        "25 Photos",
+        "Featured Listing",
+        "Customer Enquiries",
+        "Priority Support",
+        "Basic Analytics",
+      ],
+      cta: "Start Essential",
+      badge: "Most Popular",
+      featured: true,
+    },
+    {
+      name: "Growth",
+      price: 1499,
+      tagline: "Maximum reach for properties competing on every search.",
+      features: [
+        "Everything in Essential",
+        "Unlimited Photos",
+        "Homepage Placement",
+        "Premium Visibility",
+        "Advanced Analytics",
+        "Lead Priority",
+        "Dedicated Support",
+      ],
+      cta: "Start Growth",
+    },
+  ],
+  restaurants: [
+    {
+      name: "Free Listing",
+      price: 0,
+      tagline: "Let nearby travelers find your restaurant before they arrive.",
+      features: [
+        "Restaurant Profile",
+        "Contact Details",
+        "5 Images",
+        "Location Listing",
+      ],
+      cta: "Get Started Free",
+    },
+    {
+      name: "Essential",
+      price: 899,
+      tagline: "Put your menu in front of hungry tourists nearby.",
+      features: [
+        "Featured Listing",
+        "Menu Showcase",
+        "25 Images",
+        "Customer Enquiries",
+        "Analytics",
+      ],
+      cta: "Start Essential",
+      badge: "Most Popular",
+      featured: true,
+    },
+    {
+      name: "Growth",
+      price: 1499,
+      tagline: "Own the food category in your destination.",
+      features: [
+        "Premium Visibility",
+        "Homepage Promotion",
+        "Unlimited Images",
+        "Advanced Analytics",
+        "Priority Leads",
+      ],
+      cta: "Start Growth",
+    },
+  ],
+  agencies: [
+    {
+      name: "Free Listing",
+      price: 0,
+      tagline: "Publish your agency and list your first packages free.",
+      features: [
+        "Agency Profile",
+        "Contact Details",
+        "Basic Visibility",
+        "Package Listing",
+      ],
+      cta: "Get Started Free",
+    },
+    {
+      name: "Essential",
+      price: 899,
+      tagline: "A steady pipeline of travelers planning their next trip.",
+      features: [
+        "Featured Listing",
+        "Lead Generation",
+        "Package Promotion",
+        "Analytics Dashboard",
+        "Priority Support",
+      ],
+      cta: "Start Essential",
+      badge: "Most Popular",
+      featured: true,
+    },
+    {
+      name: "Growth",
+      price: 1499,
+      tagline: "Premium placement for agencies scaling group departures.",
+      features: [
+        "Premium Positioning",
+        "Homepage Promotion",
+        "Unlimited Packages",
+        "Advanced Analytics",
+        "Lead Priority",
+        "Dedicated Support",
+      ],
+      cta: "Start Growth",
+    },
+  ],
+};
+
+export const PRICING_TABS: { id: CategoryId; label: string; icon: LucideIcon }[] = [
+  { id: "hotels", label: "Hotels & Stays", icon: Building2 },
+  { id: "restaurants", label: "Restaurants", icon: Utensils },
+  { id: "agencies", label: "Travel Agencies", icon: Plane },
+];
+
+/* --------------------------------------------------------- testimonials -- */
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  location: string;
+  initials: string;
+  accent: string;
+};
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "In just 2 months, TripKnot brought us more direct enquiries than any listing platform.",
+    name: "Rajesh Menon",
+    role: "Owner, Backwater Retreat",
+    location: "Alleppey, Kerala",
+    initials: "RM",
+    accent: "bg-teal-600",
+  },
+  {
+    quote: "Tourists now find us before they arrive.",
+    name: "Anitha Krishnan",
+    role: "Co-founder, Spice Route Kitchen",
+    location: "Fort Kochi, Kerala",
+    initials: "AK",
+    accent: "bg-rust-600",
+  },
+  {
+    quote: "Our group trip bookings increased significantly.",
+    name: "Vikram Shetty",
+    role: "Director, Coastline Journeys",
+    location: "Panaji, Goa",
+    initials: "VS",
+    accent: "bg-moss-600",
+  },
+];
+
+/* ------------------------------------------------------------------ faq -- */
+
+export type Faq = { question: string; answer: string };
+
+export const FAQS: Faq[] = [
+  {
+    question: "How does TripKnot help my business?",
+    answer:
+      "TripKnot puts your business in front of travelers at the exact moment they are planning a trip to your destination. Your profile appears on destination pages, in category listings, and in search results, so travelers discover you while they are still deciding where to stay, eat, and book. Every enquiry comes to you directly, and there is no commission on the business you win.",
+  },
+  {
+    question: "Can I start with a free listing?",
+    answer:
+      "Yes. The Free Listing plan is free forever and needs no credit card. You get a verified business profile, your contact details, photos, and inclusion in destination discovery. Most partners start free, see the traffic for themselves, and upgrade once the enquiries start arriving.",
+  },
+  {
+    question: "Can I upgrade anytime?",
+    answer:
+      "You can upgrade, downgrade, or switch plans at any time from your dashboard, and the change takes effect immediately. When you upgrade mid-cycle we pro-rate the difference, so you only pay for what you actually use.",
+  },
+  {
+    question: "Do I receive direct customer enquiries?",
+    answer:
+      "Yes. Traveler enquiries are delivered straight to you by email, WhatsApp, and your dashboard, including their travel dates, group size, and what they are looking for. You reply and close the booking on your own terms. TripKnot never sits between you and your customer.",
+  },
+  {
+    question: "Is there a contract?",
+    answer:
+      "No lock-in and no long-term contract. Paid plans are billed monthly and you can cancel whenever you like. Your listing simply reverts to the Free plan at the end of the billing period, so you never lose your profile or your reviews.",
+  },
+];
+
+/* ------------------------------------------------------------------ nav -- */
+
+export const NAV_LINKS = [
+  { href: "#categories", label: "Who it is for" },
+  { href: "#features", label: "Features" },
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#faq", label: "FAQ" },
+];
