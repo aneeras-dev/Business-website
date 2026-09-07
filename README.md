@@ -107,10 +107,25 @@ master file:
 `variant="light"` recolours the wordmark to `#F6F4EF` for the near-black
 footer. The mark's gradient is unchanged in both variants.
 
-`public/logo-email.png` is the same lockup rasterised at 2x, for the emails —
+`public/logo-lockup.png` is the same lockup rasterised at 2x, for the emails —
 inline SVG is stripped by Gmail and most clients. Its `src` is absolute
 (`SITE.url`), since a mail client resolves it outside the app; regenerate it
 from `public/logo.svg` if the mark ever changes.
+
+### Icons and social card
+
+All file-convention metadata in `app/`, so Next emits the tags and cache-busts:
+
+| File | Purpose |
+| --- | --- |
+| `icon.svg` | Primary favicon — vector, crisp at every size |
+| `favicon.ico` | Legacy fallback, 16/32/48 packed from the same artwork |
+| `apple-icon.png` | 180x180 on white (iOS composites transparency to black) |
+| `opengraph-image.png` + `.alt.txt` | Social card |
+| `twitter-image.png` + `.alt.txt` | Same card for Twitter/X |
+
+The `.alt.txt` sidecars are read **verbatim** — write them with no trailing
+newline, or the newline lands inside the `content` attribute.
 
 If the tagline is ever needed at a large size, use `public/logo.svg` directly.
 

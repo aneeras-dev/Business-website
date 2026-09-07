@@ -48,7 +48,7 @@ function shell(bodyHtml: string, preheader: string): string {
       <tr><td style="padding:24px 32px;border-bottom:1px solid ${HAIRLINE};">
         <table role="presentation" cellpadding="0" cellspacing="0"><tr>
           <td style="vertical-align:middle;">
-            <img src="${SITE.url}/logo-email.png" alt="TripKnot" width="146" height="36" style="display:block;border:0;outline:none;text-decoration:none;height:36px;width:146px;">
+            <img src="${SITE.url}/logo-lockup.png" alt="TripKnot" width="146" height="36" style="display:block;border:0;outline:none;text-decoration:none;height:36px;width:146px;">
           </td>
           <td style="vertical-align:middle;padding-left:10px;">
             <span style="font-family:${FONT};font-size:12px;font-weight:600;color:${TEAL};background:rgba(13,122,123,0.10);padding:4px 9px;border-radius:999px;white-space:nowrap;">Business</span>
