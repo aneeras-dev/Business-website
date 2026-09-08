@@ -1,6 +1,7 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
-import { SITE } from "@/lib/content";
+import { SEO, SITE } from "@/lib/content";
 import { jsonLd } from "@/lib/schema";
 import "./globals.css";
 
@@ -18,9 +19,16 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-const TITLE = "TripKnot Business | Grow Your Hotel, Restaurant or Travel Agency";
-const DESCRIPTION =
-  "Join TripKnot Business and reach more travelers. Create a free listing, generate leads, receive bookings, and grow your tourism business.";
+const TITLE = SEO.title;
+const DESCRIPTION = SEO.description;
+
+/*
+ * GA4. The measurement ID is public — it ships in the client bundle on every
+ * site using Analytics — so it is inlined as the default rather than hidden
+ * behind an env var that someone has to remember to set on the host. Override
+ * with NEXT_PUBLIC_GA_ID, or set it to an empty string to switch GA off.
+ */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-3JE5QYE9JF";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -30,16 +38,7 @@ export const metadata: Metadata = {
   },
   description: DESCRIPTION,
   applicationName: SITE.name,
-  keywords: [
-    "tripknot business",
-    "hotel listing platform",
-    "travel agency marketing",
-    "restaurant listing platform",
-    "tourism business growth",
-    "hotel lead generation",
-    "travel booking platform",
-    "restaurant promotion",
-  ],
+  keywords: [...SEO.keywords],
   authors: [{ name: SITE.brand, url: `https://${SITE.domain}` }],
   creator: SITE.brand,
   publisher: SITE.brand,
@@ -75,6 +74,16 @@ export const metadata: Metadata = {
   },
   formatDetection: {
     telephone: false,
+  },
+  /*
+   * Site-verification tokens. DNS verification is preferable, but the HTML tag
+   * is the quickest route into Search Console — set the env var and redeploy.
+   */
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {},
   },
 };
 
@@ -122,6 +131,14 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        {/*
+          Production only, so `npm run dev` never pollutes the property with
+          localhost traffic. Loaded after hydration, so it stays off the
+          critical path.
+        */}
+        {process.env.NODE_ENV === "production" && GA_ID ? (
+          <GoogleAnalytics gaId={GA_ID} />
+        ) : null}
       </body>
     </html>
   );

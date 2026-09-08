@@ -25,6 +25,28 @@ export const SITE = {
   country: "India",
 } as const;
 
+/* ------------------------------------------------------------------ seo -- */
+
+/** Page-level copy, shared by the metadata block and the JSON-LD graph. */
+export const SEO = {
+  title: "TripKnot Business | Grow Your Hotel, Restaurant or Travel Agency",
+  description:
+    "Join TripKnot Business and reach more travelers. Create a free listing, generate leads, receive bookings, and grow your tourism business.",
+  /** One-sentence answer to "what is this", for answer engines. */
+  summary:
+    "TripKnot Business is a listing and lead-generation platform for hotels, restaurants, and travel agencies in India. Businesses create a profile, get discovered by travelers planning trips, and receive enquiries directly with no commission on bookings.",
+  keywords: [
+    "tripknot business",
+    "hotel listing platform",
+    "travel agency marketing",
+    "restaurant listing platform",
+    "tourism business growth",
+    "hotel lead generation",
+    "travel booking platform",
+    "restaurant promotion",
+  ],
+} as const;
+
 /* ---------------------------------------------------------------- stats -- */
 
 export type Stat = {
@@ -355,6 +377,13 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       cta: "Start Growth",
     },
   ],
+};
+
+/** Human labels for each category id, shared by schema, llms.txt, and the UI. */
+export const BUSINESS_TYPE_LABELS: Record<CategoryId, string> = {
+  hotels: "Hotels & Stays",
+  restaurants: "Restaurants",
+  agencies: "Travel Agencies",
 };
 
 export const PRICING_TABS: { id: CategoryId; label: string; icon: LucideIcon }[] = [

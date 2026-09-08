@@ -204,6 +204,64 @@ To exercise the flow without emailing anyone real, point `SALES_ADMIN_EMAIL` at
 Resend's simulator addresses — `delivered@resend.dev`, `bounced@resend.dev`, or
 `complained@resend.dev`.
 
+## SEO and answer engines
+
+`lib/schema.ts` emits one connected JSON-LD graph — Organization, ImageObject,
+WebSite, WebPage, BreadcrumbList, FAQPage, Service — cross-referenced by `@id`
+rather than nested, so engines read one entity rather than loose fragments. The
+Service node carries the pricing offers and a `HowTo` of the five onboarding
+steps.
+
+**Review and AggregateRating are deliberately absent.** The testimonials on the
+page are placeholders; marking up ratings nobody left is a Google
+structured-data violation and risks a manual action. Add them only when the
+reviews are real.
+
+`app/robots.ts` lists answer-engine crawlers explicitly (`Google-Extended`,
+`GPTBot`, `OAI-SearchBot`, `ClaudeBot`, `PerplexityBot`, and friends). Silence
+already means allowed, so this is mostly documentation — except
+`Google-Extended`, which governs Gemini grounding and AI Overviews.
+
+`/llms.txt` restates the page as plain text an LLM can quote, generated from
+`lib/content.ts` so it cannot drift from the rendered page.
+
+### Analytics
+
+GA4 via `@next/third-parties/google`, which loads gtag after hydration rather
+than on the critical path. Wired in `app/layout.tsx`.
+
+The measurement ID (`G-3JE5QYE9JF`) is inlined as the default. It is public —
+it ships in the client bundle of every site running Analytics — so it is not a
+secret, and hard-coding it avoids GA silently going dark because an env var was
+never set on the host. Override with `NEXT_PUBLIC_GA_ID`, or set that to an
+empty string to switch GA off.
+
+**It only loads when `NODE_ENV === "production"`,** so `npm run dev` never
+sends hits. Note Vercel preview deployments also run as production, so preview
+traffic will be counted — gate on `VERCEL_ENV` instead if that matters.
+
+Not included: a consent banner. GA sets cookies and collects IP-derived
+location, which brings India's DPDP Act into play and GDPR for any EU visitors.
+The footer also links "Privacy policy" at `#faq` rather than a real document.
+
+### Getting indexed
+
+On-page work does not get a site indexed — Search Console does:
+
+1. Add the property in [Search Console](https://search.google.com/search-console),
+   verifying by DNS TXT, or set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` and
+   redeploy to use the HTML tag.
+2. Submit `https://business.tripknot.in/sitemap.xml`.
+3. Run **URL Inspection** on the homepage and click **Request indexing**.
+4. Expect days to weeks for a new domain. Check progress with
+   `site:business.tripknot.in`.
+
+The single biggest remaining lever is structural: this is one page, so it can
+rank for roughly one cluster of queries. Splitting `/for-hotels`,
+`/for-restaurants`, `/for-travel-agencies`, and `/pricing` into real routes
+would let each target its own intent, and would give the sitemap something to
+do.
+
 ## Accessibility
 
 - One `<h1>`, ordered headings, single `<main>`, skip-to-content link
