@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/content";
+import { LEGAL_DOCS, SITE } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -16,5 +16,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...LEGAL_DOCS.map(
+      (doc): MetadataRoute.Sitemap[number] => ({
+        url: `${SITE.url}/legal/${doc.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "yearly",
+        priority: 0.3,
+      })
+    ),
   ];
 }

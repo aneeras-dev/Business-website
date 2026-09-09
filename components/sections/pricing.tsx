@@ -30,7 +30,7 @@ export function Pricing() {
               <span className="text-accent">enquiries roll in</span>
             </>
           }
-          description="Transparent monthly pricing with no commission on the bookings you win. Cancel any time."
+          description="Transparent monthly pricing with no commission on enquiries you close yourself. Cancel any time."
         />
 
         {/* Category tabs */}
@@ -78,7 +78,9 @@ export function Pricing() {
           viewport={viewportOnce}
           className="mt-4 text-center text-[13.5px] text-ink-muted"
         >
-          All prices in INR, billed monthly, exclusive of GST. Platform fees application.
+          All prices in INR, billed monthly, exclusive of GST and other applicable taxes. A
+          transaction fee applies only when a traveler books and pays through TripKnot &mdash;
+          see plan details.
         </motion.p>
       </div>
     </section>

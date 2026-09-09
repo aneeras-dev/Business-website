@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { Logo } from "@/components/ui/logo";
 import { NAV_LINKS } from "@/lib/content";
@@ -19,12 +20,12 @@ export function SiteHeader() {
         aria-label="Main"
         className="mx-auto flex h-[71px] max-w-[1184px] items-center justify-between gap-6 px-5 sm:px-8"
       >
-        <a href="#top" className="flex shrink-0 items-center gap-2.5">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Logo className="h-8 w-auto sm:h-9" />
           <span className="hidden rounded-full bg-teal-600/10 px-2 py-0.5 text-[11px] font-semibold text-teal-600 sm:inline">
             Business
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (

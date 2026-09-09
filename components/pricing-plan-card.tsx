@@ -67,6 +67,15 @@ export function PlanCard({
 
         <p
           className={cn(
+            "mt-1.5 text-[12.5px]",
+            plan.featured ? "text-white/45" : "text-ink-faint"
+          )}
+        >
+          + {plan.bookingFeePercent}% per booking paid through TripKnot
+        </p>
+
+        <p
+          className={cn(
             "mt-3 min-h-[2.75rem] text-[14.5px] leading-relaxed text-pretty",
             plan.featured ? "text-white/60" : "text-ink-muted"
           )}

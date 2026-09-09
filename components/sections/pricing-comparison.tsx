@@ -71,6 +71,9 @@ export function PricingComparison({ categoryId }: { categoryId: CategoryId }) {
                   <span className="mt-0.5 block text-[12.5px] font-normal text-ink-faint">
                     ₹{plan.price.toLocaleString("en-IN")}/mo
                   </span>
+                  <span className="mt-0.5 block text-[11.5px] font-normal text-ink-faint">
+                    +{plan.bookingFeePercent}% per booking
+                  </span>
                 </th>
               ))}
             </tr>

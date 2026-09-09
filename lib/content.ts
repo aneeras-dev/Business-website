@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { LucideIcon } from "lucide-react";
 import {
   BarChart3,
@@ -34,7 +35,7 @@ export const SEO = {
     "Join TripKnot Business and reach more travelers. Create a free listing, generate leads, receive bookings, and grow your tourism business.",
   /** One-sentence answer to "what is this", for answer engines. */
   summary:
-    "TripKnot Business is a listing and lead-generation platform for hotels, restaurants, and travel agencies in India. Businesses create a profile, get discovered by travelers planning trips, and receive enquiries directly with no commission on bookings.",
+    "TripKnot Business is a listing and lead-generation platform for hotels, restaurants, and travel agencies in India. Businesses create a profile, get discovered by travelers planning trips, and receive enquiries directly with no commission on enquiries they close themselves. A transaction fee (2-5%, based on plan) applies only when a traveler books and pays through TripKnot.",
   keywords: [
     "tripknot business",
     "hotel listing platform",
@@ -172,7 +173,7 @@ export const FEATURES: Feature[] = [
   {
     title: "Direct Customer Enquiries",
     description:
-      "Receive leads directly by WhatsApp, email, or phone. No middleman, no commission cut.",
+      "Receive leads directly by WhatsApp, email, or phone, with no commission when you close the booking yourself.",
     icon: MessageSquareQuote,
     chip: "bg-rust-600/10 text-rust-600",
   },
@@ -243,6 +244,13 @@ export type Plan = {
   cta: string;
   badge?: string;
   featured?: boolean;
+  /**
+   * Transaction fee charged when a traveler books and pays through TripKnot's
+   * in-platform checkout (separate from the monthly plan price). Decreases on
+   * higher tiers as an upgrade incentive. Does not apply to enquiries a
+   * partner closes themselves, off-platform.
+   */
+  bookingFeePercent: number;
 };
 
 export const PRICING: Record<CategoryId, Plan[]> = {
@@ -262,6 +270,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
         "Basic Property Profile Management",
       ],
       cta: "Get Started Free",
+      bookingFeePercent: 5,
     },
     {
       name: "Essential",
@@ -282,6 +291,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       cta: "Start Essential",
       badge: "Most Popular",
       featured: true,
+      bookingFeePercent: 3,
     },
     {
       name: "Growth",
@@ -302,6 +312,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
         "Priority Support",
       ],
       cta: "Start Growth",
+      bookingFeePercent: 2,
     },
   ],
   restaurants: [
@@ -320,6 +331,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
         "Basic Restaurant Profile Management",
       ],
       cta: "Get Started Free",
+      bookingFeePercent: 5,
     },
     {
       name: "Essential",
@@ -341,6 +353,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       cta: "Start Essential",
       badge: "Most Popular",
       featured: true,
+      bookingFeePercent: 3,
     },
     {
       name: "Growth",
@@ -361,6 +374,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
         "Priority Support",
       ],
       cta: "Start Growth",
+      bookingFeePercent: 2,
     },
   ],
   agencies: [
@@ -379,6 +393,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
         "Basic Agency Profile Management",
       ],
       cta: "Get Started Free",
+      bookingFeePercent: 5,
     },
     {
       name: "Essential",
@@ -401,6 +416,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       cta: "Start Essential",
       badge: "Most Popular",
       featured: true,
+      bookingFeePercent: 3,
     },
     {
       name: "Growth",
@@ -420,6 +436,7 @@ export const PRICING: Record<CategoryId, Plan[]> = {
         "Premium Support",
       ],
       cta: "Start Growth",
+      bookingFeePercent: 2,
     },
   ],
 };
@@ -521,7 +538,7 @@ export const FAQS: Faq[] = [
   {
     question: "How does TripKnot help my business?",
     answer:
-      "TripKnot puts your business in front of travelers at the exact moment they are planning a trip to your destination. Your profile appears on destination pages, in category listings, and in search results, so travelers discover you while they are still deciding where to stay, eat, and book. Every enquiry comes to you directly, and there is no commission on the business you win.",
+      "TripKnot puts your business in front of travelers at the exact moment they are planning a trip to your destination. Your profile appears on destination pages, in category listings, and in search results, so travelers discover you while they are still deciding where to stay, eat, and book. Every enquiry comes to you directly, with no commission when you close it yourself.",
   },
   {
     question: "Can I start with a free listing?",
@@ -536,7 +553,12 @@ export const FAQS: Faq[] = [
   {
     question: "Do I receive direct customer enquiries?",
     answer:
-      "Yes. Traveler enquiries are delivered straight to you by email, WhatsApp, and your dashboard, including their travel dates, group size, and what they are looking for. You reply and close the booking on your own terms. TripKnot never sits between you and your customer.",
+      "Yes. Traveler enquiries are delivered straight to you by email, WhatsApp, and your dashboard, including their travel dates, group size, and what they are looking for. You can reply and close the booking on your own terms with no commission, or let the traveler book and pay through TripKnot's checkout instead.",
+  },
+  {
+    question: "Do you charge commission on bookings?",
+    answer:
+      "Not on enquiries you close yourself — those are always free, with no commission or middleman. If a traveler completes a booking and pays through TripKnot's in-platform checkout, a transaction fee applies to cover payment processing: 5% on the Free plan, 3% on Essential, and 2% on Growth. Upgrading your plan lowers the fee.",
   },
   {
     question: "Is there a contract?",
@@ -554,3 +576,77 @@ export const NAV_LINKS = [
   { href: "/pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
 ];
+
+/* ---------------------------------------------------------------- legal -- */
+
+export type LegalDoc = {
+  slug: string;
+  label: string;
+  /** Short line used as the page's meta description. */
+  description: string;
+};
+
+/** Backs both the footer's Legal column and each /legal/[slug] page's metadata. */
+export const LEGAL_DOCS: LegalDoc[] = [
+  {
+    slug: "privacy-policy",
+    label: "Privacy Policy",
+    description:
+      "How TripKnot Business collects, uses, and protects the information of partner businesses and the travelers who enquire with them.",
+  },
+  {
+    slug: "terms-of-use",
+    label: "Terms of Use",
+    description:
+      "The terms that govern access to and use of the TripKnot Business website and partner dashboard.",
+  },
+  {
+    slug: "business-listing-agreement",
+    label: "Business Listing Agreement",
+    description:
+      "The agreement between TripKnot and hotels, restaurants, and travel agencies that create a listing on the platform.",
+  },
+  {
+    slug: "refund-policy",
+    label: "Refund & Cancellation Policy",
+    description:
+      "How billing, cancellation, and refunds work for TripKnot Business paid subscription plans.",
+  },
+  {
+    slug: "cookie-policy",
+    label: "Cookie Policy",
+    description:
+      "The cookies and similar technologies TripKnot Business uses, and how to control them.",
+  },
+];
+
+export const LAST_UPDATED = "September 9, 2026";
+
+/** Metadata block for a /legal/[slug] page, sharing copy with its footer link entry. */
+export function legalMetadata(slug: LegalDoc["slug"]): Metadata {
+  const doc = LEGAL_DOCS.find((d) => d.slug === slug);
+  if (!doc) throw new Error(`Unknown legal doc slug: ${slug}`);
+
+  const title = doc.label;
+  const ogTitle = `${title} | ${SITE.name}`;
+
+  return {
+    title,
+    description: doc.description,
+    alternates: {
+      canonical: `/legal/${slug}`,
+    },
+    openGraph: {
+      type: "website",
+      url: `${SITE.url}/legal/${slug}`,
+      siteName: SITE.name,
+      title: ogTitle,
+      description: doc.description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: doc.description,
+    },
+  };
+}

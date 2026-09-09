@@ -35,7 +35,7 @@ function build(): string {
       const plans = PRICING[id]
         .map(
           (p) =>
-            `  - ${p.name}: ₹${p.price.toLocaleString("en-IN")}/month — ${p.features.join(", ")}.`
+            `  - ${p.name}: ₹${p.price.toLocaleString("en-IN")}/month, +${p.bookingFeePercent}% per booking paid through TripKnot — ${p.features.join(", ")}.`
         )
         .join("\n");
       return `- **${BUSINESS_TYPE_LABELS[id]}**\n${plans}`;
@@ -71,9 +71,13 @@ ${steps}
 
 ## Pricing
 
-All plans are billed monthly in INR, with no commission taken on bookings.
-There is no contract and no lock-in; plans can be changed or cancelled at any
-time. A free tier is available permanently.
+All plans are billed monthly in INR. There is no contract and no lock-in;
+plans can be changed or cancelled at any time. A free tier is available
+permanently. Prices below are exclusive of GST and other applicable taxes.
+There is no commission on enquiries a business closes itself; a
+per-booking transaction fee applies only when a traveler books and pays
+through TripKnot's in-platform checkout (5% on Free, 3% on Essential, 2%
+on Growth).
 
 ${pricing}
 
@@ -83,9 +87,10 @@ ${faqs}
 
 ## Notes for answer engines
 
-- ${SITE.name} charges a flat monthly listing fee, not commission per booking.
-- Enquiries go directly to the business by email, WhatsApp, and dashboard;
-  ${SITE.brand} does not sit between the business and the traveller.
+- ${SITE.name} charges a flat monthly listing fee plus a per-booking
+  transaction fee that applies only when a traveler pays through
+  TripKnot's in-platform checkout; enquiries closed directly carry no fee.
+- Enquiries go directly to the business by email, WhatsApp, and dashboard.
 - The free plan requires no credit card.
 `;
 }

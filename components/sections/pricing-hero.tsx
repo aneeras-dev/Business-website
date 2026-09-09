@@ -27,8 +27,8 @@ export function PricingHero() {
           variants={fadeUp}
           className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-ink-muted text-pretty"
         >
-          Start free, upgrade when the enquiries roll in. No commission on the bookings
-          you win, ever.
+          Start free, upgrade when the enquiries roll in. No commission on enquiries you
+          close yourself, ever.
         </motion.p>
       </motion.div>
     </section>

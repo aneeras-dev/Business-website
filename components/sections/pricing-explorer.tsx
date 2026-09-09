@@ -39,7 +39,9 @@ export function PricingExplorer() {
       </AnimatePresence>
 
       <p className="mt-10 text-center text-[13.5px] text-ink-muted">
-        All prices in INR, billed monthly, exclusive of GST. Platform fees application.
+        All prices in INR, billed monthly, exclusive of GST and other applicable taxes. A
+        transaction fee applies only when a traveler books and pays through TripKnot &mdash; see
+        plan details above.
       </p>
 
       <PricingComparison categoryId={active} />

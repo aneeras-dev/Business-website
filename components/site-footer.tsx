@@ -1,5 +1,5 @@
 import { Logo } from "@/components/ui/logo";
-import { NAV_LINKS, SITE } from "@/lib/content";
+import { LEGAL_DOCS, NAV_LINKS, SITE } from "@/lib/content";
 
 const COLUMNS = [
   { heading: "Platform", links: NAV_LINKS },
@@ -17,9 +17,11 @@ const COLUMNS = [
     links: [
       { href: "#faq", label: "Help centre" },
       { href: "#start", label: "Contact sales" },
-      { href: "#faq", label: "Business listing terms" },
-      { href: "#faq", label: "Privacy policy" },
     ],
+  },
+  {
+    heading: "Legal",
+    links: LEGAL_DOCS.map((doc) => ({ href: `/legal/${doc.slug}`, label: doc.label })),
   },
 ];
 
@@ -28,12 +30,11 @@ export function SiteFooter() {
   return (
     <footer className="bg-[#0b100f] text-white/70">
       <div className="mx-auto max-w-[1184px] px-5 py-16 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_repeat(3,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_repeat(4,1fr)] lg:gap-8">
           <div>
             <Logo variant="light" className="h-9 w-auto" />
             <p className="mt-4 max-w-xs text-[14.5px] leading-relaxed text-pretty text-white/55">
-              Smart itineraries, hidden gems, and the travelers already planning a trip
-              to your doorstep.
+              Smart itineraries, hidden gems, and travel that fits the way you actually move.
             </p>
             <address className="mt-5 space-y-1.5 text-[14.5px] not-italic">
               <p className="text-white/55">{SITE.address}</p>
