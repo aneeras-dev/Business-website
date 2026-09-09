@@ -1,4 +1,4 @@
-import type { CategoryId } from "@/lib/content";
+import { BUSINESS_TYPE_LABELS, type CategoryId } from "@/lib/content";
 
 /**
  * Shape and validation for a sales enquiry. Imported by both the dialog and
@@ -28,15 +28,16 @@ export const EMPTY_ENQUIRY: SalesEnquiry = {
   phone: "",
   businessType: "",
   city: "",
-  plan: "unsure",
+  plan: "free",
   message: "",
 };
 
-export const BUSINESS_TYPES: { value: CategoryId; label: string }[] = [
-  { value: "hotels", label: "Hotel or stay" },
-  { value: "restaurants", label: "Restaurant or cafe" },
-  { value: "agencies", label: "Travel agency or tour operator" },
-];
+/** Same names shown on the homepage, so the dropdown never contradicts the marketing copy. */
+const BUSINESS_TYPE_ORDER: CategoryId[] = ["hotels", "restaurants", "agencies"];
+
+export const BUSINESS_TYPES: { value: CategoryId; label: string }[] = BUSINESS_TYPE_ORDER.map(
+  (value) => ({ value, label: BUSINESS_TYPE_LABELS[value] })
+);
 
 export const PLAN_OPTIONS: { value: PlanInterest; label: string }[] = [
   { value: "free", label: "Free Listing" },

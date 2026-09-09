@@ -44,7 +44,7 @@ export function Hero() {
             variants={fadeUp}
             className="font-display mt-6 text-[3.1rem] text-balance sm:text-[4.75rem] lg:text-[6.2rem]"
           >
-            Grow your tourism business
+            Grow your business
             <br />
             <span className="text-accent">with TripKnot.</span>
           </motion.h1>
@@ -66,7 +66,7 @@ export function Hero() {
               <ArrowRight className="size-4" />
             </ButtonLink>
             <ButtonLink
-              href="#pricing"
+              href="/pricing"
               variant="secondary"
               className="w-full sm:w-auto"
             >
@@ -80,8 +80,7 @@ export function Hero() {
           >
             {[
               "Free forever plan",
-              "No commission on bookings",
-              "Live in 2 minutes",
+              "Live in 10 minutes",
             ].map((item) => (
               <li key={item} className="flex items-center gap-1.5">
                 <BadgeCheck className="size-4 text-teal-600" />

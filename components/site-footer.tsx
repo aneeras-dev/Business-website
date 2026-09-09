@@ -9,7 +9,7 @@ const COLUMNS = [
       { href: "#start", label: "Hotels & Stays" },
       { href: "#start", label: "Restaurants" },
       { href: "#start", label: "Travel Agencies" },
-      { href: "#pricing", label: "Compare plans" },
+      { href: "/pricing", label: "Compare plans" },
     ],
   },
   {

@@ -252,11 +252,14 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       price: 0,
       tagline: "Get on the map and start showing up in destination searches.",
       features: [
-        "Basic Listing",
-        "Business Details",
-        "5 Photos",
-        "Contact Information",
-        "Destination Discovery",
+        "Free Hotel Listing",
+        "Property Name, Category, Check-in Hours & Address",
+        "2 Property Photos",
+        "Basic Property Description",
+        "Basic Search & Discover Placement",
+        "Monthly Views & Saves",
+        "Paid Promotional Push Notifications",
+        "Basic Property Profile Management",
       ],
       cta: "Get Started Free",
     },
@@ -266,11 +269,15 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       tagline: "For properties ready to turn visibility into booked rooms.",
       features: [
         "Everything in Free",
-        "25 Photos",
-        "Featured Listing",
-        "Customer Enquiries",
-        "Priority Support",
-        "Basic Analytics",
+        "Full Analytics Dashboard (Views, Saves, Map Clicks, Direction Taps)",
+        "Weekly Performance Trends",
+        "Enhanced Listing with Photo Carousel",
+        "Up to 4 Room Types with Up to 15 Photos of Rooms",
+        "2 Free Promotional Push Campaigns/Month",
+        "Additional Paid Push Campaigns",
+        "Location/Radius Targeting",
+        "Room Offers & Deals",
+        "Better Listing Presentation",
       ],
       cta: "Start Essential",
       badge: "Most Popular",
@@ -282,12 +289,17 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       tagline: "Maximum reach for properties competing on every search.",
       features: [
         "Everything in Essential",
-        "Unlimited Photos",
-        "Homepage Placement",
-        "Premium Visibility",
+        "Priority Ranking in Discover",
+        "Priority Ranking in Map Results",
+        "5 Free Promotional Push Campaigns/Month",
+        "Additional Paid Campaigns",
+        "Geo-Targeted Campaigns (Location, Radius, Travel Dates, Interests)",
+        "Featured Placement on Home Pages",
+        "Verified Hotel Badge",
         "Advanced Analytics",
-        "Lead Priority",
-        "Dedicated Support",
+        "Premium Property Visibility",
+        "Listing in Itinerary Recommendations",
+        "Priority Support",
       ],
       cta: "Start Growth",
     },
@@ -298,23 +310,33 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       price: 0,
       tagline: "Let nearby travelers find your restaurant before they arrive.",
       features: [
-        "Restaurant Profile",
-        "Contact Details",
-        "5 Images",
-        "Location Listing",
+        "Free Restaurant Listing",
+        "Restaurant Name, Cuisine, Hours & Address",
+        "2 Restaurant Photos",
+        "Basic Restaurant Description",
+        "Basic Search & Discover Placement",
+        "Monthly Views & Saves",
+        "Paid Promotional Push Notifications",
+        "Basic Restaurant Profile Management",
       ],
       cta: "Get Started Free",
     },
     {
       name: "Essential",
-      price: 899,
+      price: 799,
       tagline: "Put your menu in front of hungry tourists nearby.",
       features: [
-        "Featured Listing",
-        "Menu Showcase",
-        "25 Images",
-        "Customer Enquiries",
-        "Analytics",
+        "Everything in Free",
+        "Full Analytics Dashboard (Views, Saves, Map Clicks, Direction Taps)",
+        "Weekly Performance Trends",
+        "Enhanced Listing with Photo Carousel",
+        "Menu Showcase with Up to 15 Dish Photos",
+        "Highlight Tags (Must Try, Hidden Gem, Traveler Favorite)",
+        "2 Free Promotional Push Campaigns/Month",
+        "Additional Paid Push Campaigns",
+        "Location/Radius Targeting",
+        "Meal Offers & Deals",
+        "Better Listing Presentation",
       ],
       cta: "Start Essential",
       badge: "Most Popular",
@@ -322,14 +344,21 @@ export const PRICING: Record<CategoryId, Plan[]> = {
     },
     {
       name: "Growth",
-      price: 1499,
+      price: 1399,
       tagline: "Own the food category in your destination.",
       features: [
-        "Premium Visibility",
-        "Homepage Promotion",
-        "Unlimited Images",
+        "Everything in Essential",
+        "Priority Ranking in Discover",
+        "Priority Ranking in Map Results",
+        "5 Free Promotional Push Campaigns/Month",
+        "Additional Paid Campaigns",
+        "Geo-Targeted Campaigns (Location, Radius, Travel Dates, Interests)",
+        "Featured Placement on Home Pages",
+        "Verified Restaurant Badge",
         "Advanced Analytics",
-        "Priority Leads",
+        "Premium Restaurant Visibility",
+        "Listing in Itinerary Recommendations",
+        "Priority Support",
       ],
       cta: "Start Growth",
     },
@@ -340,22 +369,33 @@ export const PRICING: Record<CategoryId, Plan[]> = {
       price: 0,
       tagline: "Publish your agency and list your first packages free.",
       features: [
-        "Agency Profile",
-        "Contact Details",
-        "Basic Visibility",
-        "Package Listing",
+        "Free Agency Listing",
+        "Agency Name, Specialty, Hours & Address",
+        "2 Agency Photos",
+        "Basic Agency Description",
+        "Basic Search & Discover Placement",
+        "Monthly Views & Saves",
+        "Paid Promotional Push Notifications",
+        "Basic Agency Profile Management",
       ],
       cta: "Get Started Free",
     },
     {
       name: "Essential",
-      price: 899,
+      price: 999,
       tagline: "A steady pipeline of travelers planning their next trip.",
       features: [
-        "Featured Listing",
-        "Lead Generation",
-        "Package Promotion",
-        "Analytics Dashboard",
+        "Everything in Free",
+        "Full Analytics Dashboard (Views, Saves, Map Clicks, Direction Taps)",
+        "Weekly Performance Trends",
+        "Enhanced Listing with Photo Carousel",
+        "Up to 4 Package Listings with Up to 15 Photos Each",
+        "Highlight Tags (Bestseller, Hidden Gem, Traveler Favorite)",
+        "2 Free Promotional Push Campaigns/Month",
+        "Additional Paid Push Campaigns",
+        "Location/Radius Targeting",
+        "Package Offers & Deals",
+        "Better Listing Presentation",
         "Priority Support",
       ],
       cta: "Start Essential",
@@ -364,20 +404,62 @@ export const PRICING: Record<CategoryId, Plan[]> = {
     },
     {
       name: "Growth",
-      price: 1499,
+      price: 1699,
       tagline: "Premium placement for agencies scaling group departures.",
       features: [
-        "Premium Positioning",
-        "Homepage Promotion",
-        "Unlimited Packages",
+        "Everything in Essential",
+        "Priority Ranking in Discover",
+        "Priority Ranking in Map Results",
+        "5 Free Promotional Push Campaigns/Month",
+        "Additional Paid Campaigns",
+        "Geo-Targeted Campaigns (Location, Radius, Travel Dates, Interests)",
+        "Featured Placement on Home Pages",
+        "Verified Agency Badge",
         "Advanced Analytics",
-        "Lead Priority",
-        "Dedicated Support",
+        "Premium Agency Visibility",
+        "Premium Support",
       ],
       cta: "Start Growth",
     },
   ],
 };
+
+export type ComparisonRow = {
+  feature: string;
+  /** The cheapest tier this feature first appears in — it carries into every tier above it. */
+  from: "free" | "essential" | "growth";
+};
+
+const TIER_ORDER = ["free", "essential", "growth"] as const;
+
+/** A plan's own bullet list carries an "Everything in X" line — the comparison table replaces that with a section header instead. */
+function withoutCarryoverLine(features: string[]): string[] {
+  return features.filter((feature) => !feature.startsWith("Everything in "));
+}
+
+/**
+ * Derives the full feature-comparison matrix for a category directly from
+ * `PRICING`, so the comparison table can never drift from the plan cards.
+ */
+export function getComparisonRows(categoryId: CategoryId): ComparisonRow[] {
+  const [free, essential, growth] = PRICING[categoryId];
+  return [
+    ...withoutCarryoverLine(free.features).map(
+      (feature): ComparisonRow => ({ feature, from: "free" })
+    ),
+    ...withoutCarryoverLine(essential.features).map(
+      (feature): ComparisonRow => ({ feature, from: "essential" })
+    ),
+    ...withoutCarryoverLine(growth.features).map(
+      (feature): ComparisonRow => ({ feature, from: "growth" })
+    ),
+  ];
+}
+
+/** Whether a row (first available at `row.from`) is included at `tier`. */
+export function isIncludedAt(row: ComparisonRow, tier: ComparisonRow["from"]): boolean {
+  return TIER_ORDER.indexOf(row.from) <= TIER_ORDER.indexOf(tier);
+}
 
 /** Human labels for each category id, shared by schema, llms.txt, and the UI. */
 export const BUSINESS_TYPE_LABELS: Record<CategoryId, string> = {
@@ -466,9 +548,9 @@ export const FAQS: Faq[] = [
 /* ------------------------------------------------------------------ nav -- */
 
 export const NAV_LINKS = [
-  { href: "#categories", label: "Who it is for" },
-  { href: "#features", label: "Features" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#categories", label: "Who it is for" },
+  { href: "/#features", label: "Features" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
 ];

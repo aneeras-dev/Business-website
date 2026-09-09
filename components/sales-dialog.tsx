@@ -96,7 +96,7 @@ function SalesDialog({
     setValues({
       ...EMPTY_ENQUIRY,
       businessType: prefill.businessType ?? "",
-      plan: prefill.plan ?? "unsure",
+      plan: prefill.plan ?? "free",
     });
     setErrors({});
     setStatus("idle");
@@ -374,7 +374,7 @@ function EnquiryForm({
               {...props}
               type="text"
               autoComplete="address-level2"
-              placeholder="Alleppey, Kerala"
+              placeholder="Pondicherry"
               value={values.city}
               onChange={(e) => onChange("city", e.target.value)}
             />

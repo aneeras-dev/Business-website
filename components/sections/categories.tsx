@@ -2,11 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
+import { useSalesDialog } from "@/components/sales-dialog";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CATEGORIES } from "@/lib/content";
 import { EASE, fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 export function Categories() {
+  const { openSalesDialog } = useSalesDialog();
+
   return (
     <section
       id="categories"
@@ -64,13 +67,19 @@ export function Categories() {
                 </ul>
               </div>
 
-              <a
-                href="#start"
+              <button
+                type="button"
+                onClick={() =>
+                  openSalesDialog({
+                    businessType: category.id,
+                    context: `${category.name} partnership`,
+                  })
+                }
                 className="relative mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-hairline px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-ink/[0.04]"
               >
                 {category.cta}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </button>
             </motion.article>
           ))}
         </motion.div>
