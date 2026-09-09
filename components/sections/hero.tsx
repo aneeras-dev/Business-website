@@ -234,7 +234,6 @@ function RevenueChart() {
 
   const line = points.map(([x, y], i) => `${i === 0 ? "M" : "L"}${x},${y}`).join(" ");
   const area = `${line} L${width},${height} L0,${height} Z`;
-
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
